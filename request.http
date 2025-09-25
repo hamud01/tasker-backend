@@ -1,5 +1,6 @@
 POST http://localhost:5000/api/task/create
 content-type: application/json
+Authorization: beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk5ODIwNS1jNDI5LTcwMDAtYTE4Ny0yZjRhMzMzNjUwMWYiLCJpYXQiOjE3NTg4MjMyMTksImV4cCI6MTc2MDU1MTIxOX0.r68YMvyJWwKgIKuh4u6i6Tr61x4uD6-uqfqdTdfRGes
 
 {
   "title": "Create a awesome Task Application"
@@ -8,6 +9,7 @@ content-type: application/json
 
 GET http://localhost:5000/api/task/all
 content-type: application/json
+Authorization: beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMTk5ODIwNS1jNDI5LTcwMDAtYTE4Ny0yZjRhMzMzNjUwMWYiLCJpYXQiOjE3NTg4MjMyMTksImV4cCI6MTc2MDU1MTIxOX0.r68YMvyJWwKgIKuh4u6i6Tr61x4uD6-uqfqdTdfRGes
 ###
 
 PUT http://localhost:5000/api/task/update?id=0199806a-f8cc-7000-b53d-3796d9e1694c
@@ -16,8 +18,28 @@ content-type: application/json
 {
   "isCompleted": true
 }
-
 ###
 
 DELETE http://localhost:5000/api/task/delete?id=0199806a-f8cc-7000-b53d-3796d9e1694c
 content-type: application/json
+### 
+
+POST http://localhost:5000/api/user/signup
+content-type: application/json
+
+{
+  "username": "hamud01",
+  "password": "123456",
+  "firstName": "Hamud",
+  "lastName": "Krossa"
+}
+
+### 
+
+POST http://localhost:5000/api/user/signin
+content-type: application/json
+
+{
+  "username": "hamud01",
+  "password": "123456"
+}

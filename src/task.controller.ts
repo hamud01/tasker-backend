@@ -1,14 +1,18 @@
 import type { RequestHandler } from "express";
 import { createTask, deleteTaskById, getAllTasks, updateTaskById } from "./task.service";
+import type { AuthenticatedRequest } from "./types";
 
-export const createTaskController: RequestHandler = async (req, res, next) => {
+export const createTaskController: RequestHandler = async (req:AuthenticatedRequest, res, next) => {
   try {
     const {title} = req.body
     if(!title) return res.status(400).json({
       error: 'Cannot create task without title.' 
     })
 
-    const task = await createTask(title)
+    const {userId} = req
+    if(!userId) return res.sendStatus(403)
+
+    const task = await createTask(userId, title)
     res.json(task)
   } catch (error) {
     next(error)
@@ -55,10 +59,13 @@ export const deleteTaskController: RequestHandler = async (req, res, next) => {
   }
 }
 
-export const getAllTasksController: RequestHandler = async (req, res, next) => {
+export const getAllTasksController: RequestHandler = async (req:AuthenticatedRequest, res, next) => {
   try {
     const {page, limit} = req.query as Record<'page' | 'limit', string>
-    const result = await getAllTasks(page, limit)
+
+    const {userId} = req
+    if(!userId) return res.sendStatus(403)
+    const result = await getAllTasks(userId, page, limit)
     res.json(result)
   } catch (error) {
     next(error)

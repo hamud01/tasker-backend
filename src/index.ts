@@ -26,7 +26,7 @@ app.use('/api', v1)
 
 try {
   await connect(config.mongoUri)
-  
+  console.log('Connected to mongodb')
   const server = createServer(app)
   server.listen(config.port, () => {
     console.log(`Server running up in port ${config.port}`)

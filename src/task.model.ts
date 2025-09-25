@@ -22,6 +22,11 @@ const taskSchema = new Schema<TaskDocument>({
   isArchived: {
     type: Boolean,
     default: false
+  },
+
+  userId: {
+    type: String,
+    required: true
   }
 })
 
