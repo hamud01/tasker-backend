@@ -1,0 +1,23 @@
+POST http://localhost:5000/api/task/create
+content-type: application/json
+
+{
+  "title": "Create a awesome Task Application"
+}
+###
+
+GET http://localhost:5000/api/task/all
+content-type: application/json
+###
+
+PUT http://localhost:5000/api/task/update?id=0199806a-f8cc-7000-b53d-3796d9e1694c
+content-type: application/json
+
+{
+  "isCompleted": true
+}
+
+###
+
+DELETE http://localhost:5000/api/task/delete?id=0199806a-f8cc-7000-b53d-3796d9e1694c
+content-type: application/json
