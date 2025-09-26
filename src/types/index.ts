@@ -42,11 +42,8 @@ export type ValidateUserInput = Pick<User,
 
 export interface UserDocument extends User, UserMethods, Document {}
 
-export type JwtType = 'refresh' | 'access'
-
-
 
 export interface AuthenticatedRequest extends Request {
   userId?: string
-  userFullName?: string
+  sessionId?:string
 }

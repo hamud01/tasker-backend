@@ -1,9 +1,9 @@
 import { JsonWebTokenError, sign, TokenExpiredError, verify } from 'jsonwebtoken'
-import type { JwtType } from './types'
+import type { JwtType, JwtErrorType, JwtDecodeResult } from '@/types/jwt'
 import config from '@/config'
 import dayjs from 'dayjs'
 
-export const createToken = (sub:string, type: JwtType) => {
+export const createToken = (sub:string, type: JwtType): string => {
   const duration = config.token[type].duration as [number, 'h' |'d']
   return sign(
     {
@@ -14,11 +14,11 @@ export const createToken = (sub:string, type: JwtType) => {
   )
 }
 
-export const decodeToken = (token:string, type: JwtType) => {
+export const decodeToken = (token:string, type: JwtType): JwtDecodeResult => {
   try {
     const { sub } = verify(token, config.token[type].secret)
-    if(!sub) return [null, 'undefined']
-    return [sub, null]
+    if(!sub) return [null, 'unknown']
+    return [sub as string, null]
   } catch (error) {
     if(error instanceof TokenExpiredError) {
       return [null, 'expired']

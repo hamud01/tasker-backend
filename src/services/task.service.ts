@@ -1,5 +1,5 @@
-import TaskModel from "./task.model";
-import type { Task } from "./types";
+import TaskModel from "@/models/task.model";
+import type { Task } from "@/types";
 
 
 export const getAllTasks = async (userId:string, p: string, l?: string) => {

@@ -4,6 +4,7 @@ const {
   MONGO_URI,
   SECRET_ACCESS_TOKEN,
   SECRET_REFRESH_TOKEN,
+  SECRET_COOKIE
 } = process.env
 
 export default Object.freeze({
@@ -21,5 +22,9 @@ export default Object.freeze({
       secret: SECRET_REFRESH_TOKEN as string,
       duration: [20, 'd']
     },
+  },
+
+  cookie: {
+    secret: SECRET_COOKIE as string
   }
 })
